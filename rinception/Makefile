@@ -1,33 +1,40 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+         #
+#    By: rgarcia <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/03 10:05:32 by jrinna            #+#    #+#              #
-#    Updated: 2023/01/04 11:07:42 by jrinna           ###   ########lyon.fr    #
+#    Created: 2023/09/19 10:55:53 by rgarcia           #+#    #+#              #
+#    Updated: 2023/09/19 10:55:58 by rgarcia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DC := docker-compose -f ./srcs/docker-compose.yaml
-volumes = ${shell docker volume ls -q}
+DOCKER_COMPOSE	=	docker-compose -f ./srcs/docker-compose.yml
+
+VOLUMES	=	${shell docker volume ls -q}
+
+MARIADB_PATH	=	/home/rgarcia/data/mariadb
+WORDPRESS_PATH	=	/home/rgarcia/data/wordpress
 
 all :
-	${DC} up -d --build
+	mkdir -p ${MARIADB_PATH} ${WORDPRESS_PATH}
+	${DOCKER_COMPOSE} up -d --build
 
-down:
-	${DC} down
+down :
+	${DOCKER_COMPOSE} down
 
-stop:
-	${DC} stop
+stop :
+	${DOCKER_COMPOSE} stop
+
+reload : down all
 
 clean : down
 	docker system prune -af --volumes
 
 fclean : clean
-	docker volume rm ${volumes}
+	docker volume rm ${VOLUMES}
 
 re : fclean all
 
-.PHONY : all clean fclean re down stop
+.PHONY: all clean fclean re stop down

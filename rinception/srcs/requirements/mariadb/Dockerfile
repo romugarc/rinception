@@ -5,4 +5,5 @@ RUN	sed -i 's/bind-address/bind-address =* #/i' /etc/mysql/mariadb.conf.d/50-ser
 EXPOSE	3306
 COPY	./database.sh ./
 RUN	chmod +x database.sh
-ENTRYPOINT	["./database.sh"]
+RUN	echo $DB_USER
+#ENTRYPOINT	[ "bash","./database.sh"]

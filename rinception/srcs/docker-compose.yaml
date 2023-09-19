@@ -6,7 +6,6 @@ services:
                 build: ./requirements/mariadb
                 networks:
                         - inception
-                env_file: .env
                 volumes:
                         - mariadb_volume:/var/lib/mysql
                 restart: on-failure
@@ -20,7 +19,6 @@ services:
                         - inception
                 depends_on:
                         - wordpress
-                env_file: .env
                 volumes:
                         - wordpress_volume:/var/www/wordpress
                 restart: on-failure
@@ -34,7 +32,6 @@ services:
                         - inception
                 depends_on:
                         - mariadb
-                env_file: .env
                 volumes:
                         - wordpress_volume:/var/www/wordpress
                 restart: on-failure
@@ -50,10 +47,12 @@ volumes:
                 name: mariadb_volume
                 driver_opts:
                         device: /home/rgarcia/data/mariadb
-                        type: bind
+                        type: 'none'
+                        o: bind
         
         wordpress_volume:
                name: wordpress_volume
                driver_opts:
                        device: /home/rgarcia/data/mariadb
-                       type: bind
+                       type: 'none'
+                       o: bind
