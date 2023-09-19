@@ -6,4 +6,4 @@ EXPOSE	3306
 COPY	./database.sh ./
 RUN	chmod +x database.sh
 RUN	echo $DB_USER
-#ENTRYPOINT	[ "bash","./database.sh"]
+ENTRYPOINT	[ "bash","./database.sh"]
