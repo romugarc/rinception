@@ -3,40 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgarcia <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/09 10:13:55 by rgarcia           #+#    #+#              #
-#    Updated: 2023/09/10 13:34:23 by rgarcia          ###   ########.fr        #
+#    Created: 2022/11/03 10:05:32 by jrinna            #+#    #+#              #
+#    Updated: 2023/01/04 11:07:42 by jrinna           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= inception
+DC := docker-compose -f ./srcs/docker-compose.yaml
+volumes = ${shell docker volume ls -q}
 
-SRCS	=	main.cpp		\
+all :
+	${DC} up -d --build
 
-OBJS	=	${SRCS:.cpp=.o}
+down:
+	${DC} down
 
-HEADER_FILES	=	inception.hpp	\
+stop:
+	${DC} stop
 
-CC		=	c++
-RM		=	rm -f
+clean : down
+	docker system prune -af --volumes
 
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
+fclean : clean
+	docker volume rm ${volumes}
 
-all:		${NAME}
+re : fclean all
 
-%.o : %.cpp 	${HEADER_FILES}
-		${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}
-
-$(NAME):	${OBJS}
-			@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
-
-clean:
-			${RM} ${OBJS}
-
-fclean:		clean
-			${RM} ${NAME}
-
-re:			fclean all
-
-.PHONY:		all clean fclean re ${NAME}
+.PHONY : all clean fclean re down stop
