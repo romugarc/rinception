@@ -6,15 +6,11 @@ then
   		sleep 5
 	done
 
-	echo "Starting installation wordpress"
 	wp core download --allow-root
 	wp config create --allow-root --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_USER_PASSWORD} --dbhost=${DB_HOST} --force
 	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_USER} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
 	wp user create --allow-root ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=subscriber
-	wp theme install riverbank --allow-root --activate
-
-else
-	echo "No need to install wordpress, the volume as been retrieved"
+	wp theme install astra --allow-root --activate
 fi
 
 service php7.3-fpm start && service php7.3-fpm stop
