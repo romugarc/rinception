@@ -19,7 +19,7 @@ then
 	# create the damin user
 	wp core install --allow-root --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_USER} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL}
 	# create a test user
-	wp user create --allow-root ${WP_USER} ${WP_TEST_EMAIL} --user_pass=${WP_TEST_PASSWORD} --role=subscriber
+	wp user create --allow-root ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=subscriber
 	# install a nice theme
 	wp theme install riverbank --allow-root --activate
 
