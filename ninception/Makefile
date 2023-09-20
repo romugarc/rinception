@@ -34,7 +34,12 @@ clean : down
 
 fclean : clean
 	docker volume rm ${VOLUMES}
-	sudo rm -rf ${MARIADB_PATH} ${WORDPRESS_PATH}
+	if (-d ${MARIADB_PATH}) then
+		sudo rm -rf ${MARIADB_PATH}
+	fi
+	if (-d ${WORDPRESS_PATH}) then
+		sudo rm -rf ${WORDPRESS_PATH}
+	fi
 
 re : fclean all
 
