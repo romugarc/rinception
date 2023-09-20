@@ -3,7 +3,6 @@ version: '3.5'
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb
     build: ./requirements/mariadb
     volumes:
       - mariadb-vol:/var/lib/mysql
@@ -15,7 +14,6 @@ services:
 
   wordpress:
     container_name: wordpress
-    image: wordpress
     build: ./requirements/wordpress
     volumes:
       - wordpress-vol:/var/www/wordpress
@@ -29,7 +27,6 @@ services:
 
   nginx:
     container_name: nginx
-    image: nginx
     build: ./requirements/nginx
     volumes:
       - wordpress-vol:/var/www/wordpress
