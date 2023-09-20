@@ -6,7 +6,7 @@ then
 	sleep 15
 	# check if can connect to the database
 	while ! mysql -h mariadb --user=${DB_USER} --password=${DB_USER_PASSWORD} -e "SELECT schema_name FROM information_schema.schemata WHERE schema_name='$DB_NAME'"; do
-  		echo "Waiting for database to be created..."
+  		echo "saucisse..."
 		# legacy sleep useless now
   		sleep 5
 	done
