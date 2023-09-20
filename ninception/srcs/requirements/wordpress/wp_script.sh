@@ -27,5 +27,5 @@ else
 	echo "No need to install wordpress, the volume as been retrieved"
 fi
 # start stop and restart wordpress just to be sure
-service php7.3-fpm start && service php7.3-fpm stop
-php-fpm7.3 -F
+#service php7.3-fpm start && service php7.3-fpm stop
+#php-fpm7.3 -F
