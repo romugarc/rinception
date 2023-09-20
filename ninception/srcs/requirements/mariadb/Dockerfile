@@ -6,8 +6,8 @@ RUN sed -i 's/bind-address/bind-address = 0.0.0.0 #/i' /etc/mysql/mariadb.conf.d
 # expose the port 3306 for the docker network
 EXPOSE 3306
 # copy the script inside the docker
-COPY ./mariadb.sh ./
+COPY ./database.sh ./
 # make sure that the script can be executed
-RUN chmod +x mariadb.sh
+RUN chmod +x database.sh
 # execute the script inside the docker
-ENTRYPOINT [ "./mariadb.sh" ]
+ENTRYPOINT [ "./database.sh" ]
