@@ -10,4 +10,4 @@ COPY	./wp_script.sh ./
 RUN	chmod +x ./wp_script.sh
 WORKDIR	/var/www/wordpress
 EXPOSE	9000
-ENTRYPOINT [ "bash","./wp_script.sh" ]
+ENTRYPOINT [ "bash","/wp_script.sh" ]
