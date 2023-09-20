@@ -20,7 +20,7 @@ rsa:4096 \
 # tell where to store the generated key
 -out /etc/cert/cert.pem \
 # tell where to store the certificate
--subj "/C=FR/ST=Rhone/L=Lyon/O=42/OU=rgarcia testfloor/CN=www.rgarcia.42.fr"
+-subj "/C=FR/ST=Rhone/L=Lyon/O=42/OU=jrinna testfloor/CN=www.jrinna.42.fr"
 # expose port 443 to the docker network
 EXPOSE 443
 # copy the nginx conf inside the docker

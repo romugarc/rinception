@@ -50,13 +50,13 @@ volumes:
   mariadb-vol:
     name: mariadb-volume
     driver_opts:
-      device: /home/rgarcia/data/mariadb
+      device: /home/jrinna/data/mariadb
       type: volume
       o: bind
 
   wordpress-vol:
     name: wordpress-volume
     driver_opts:
-      device: /home/rgarcia/data/wordpress
+      device: /home/jrinna/data/wordpress
       type: volume
       o: bind
