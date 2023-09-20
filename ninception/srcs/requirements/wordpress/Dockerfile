@@ -9,7 +9,7 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 COPY ./www.conf /etc/php/7.3/fpm/pool.d/www.conf
 # the same script copy and right edit
 COPY ./wp_script.sh ./wp_script.sh
-RUN chmod +x ./wordpress.sh
+RUN chmod +x ./wp_script.sh
 # create and move to this location inside the docker
 WORKDIR /var/www/wordpress
 
