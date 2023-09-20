@@ -8,7 +8,7 @@ services:
       - mariadb-vol:/var/lib/mysql
     networks:
       - Inception
-    restart: always
+    restart: on-failure
     env_file:
       - .env
 
@@ -19,7 +19,7 @@ services:
       - wordpress-vol:/var/www/wordpress
     networks:
       - Inception
-    restart: always
+    restart: on-failure
     depends_on:
       - mariadb
     env_file:
@@ -32,7 +32,7 @@ services:
       - wordpress-vol:/var/www/wordpress
     networks:
       - Inception
-    restart: always
+    restart: on-failure
     ports:
       - 443:443
     depends_on:
