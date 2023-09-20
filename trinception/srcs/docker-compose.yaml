@@ -48,12 +48,12 @@ volumes:
     name: mariadb-volume
     driver_opts:
       device: /home/rgarcia/data/mariadb
-      type: volume
+      type: 'none'
       o: bind
 
   wordpress-vol:
     name: wordpress-volume
     driver_opts:
       device: /home/rgarcia/data/wordpress
-      type: volume
+      type: 'none'
       o: bind
