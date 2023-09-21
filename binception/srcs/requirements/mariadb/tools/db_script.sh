@@ -11,8 +11,6 @@ then
 	sed -i		"s/password =/password = ${DB_USER_PASSWORD} #/" /etc/mysql/debian.cnf
 	mysql -e	"ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_USER_PASSWORD}';"
 	service		mysql stop
-else
-	echo "No need to create database, the old one was retrieved"
 fi
 
 mysqld_safe
