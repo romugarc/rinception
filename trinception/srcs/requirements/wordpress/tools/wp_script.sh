@@ -13,5 +13,5 @@ then
 	wp theme install astra --allow-root --activate
 fi
 
-service php7.3-fpm start && service php7.3-fpm stop
+service php8.1-fpm start && service php8.1-fpm stop
 php-fpm7.3 -F
