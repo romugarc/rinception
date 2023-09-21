@@ -1,7 +1,7 @@
 FROM debian:bullseye
 RUN	apt-get update -y && apt-get upgrade -y
 RUN	apt-get install mariadb-server -y
-RUN apt-get install ;ysql-apt-config && apt-get install mysql-client -y
+RUN apt-get install mysql-apt-config && apt-get install mysql-client -y
 RUN sed -i 's/bind-address/bind-address = 0.0.0.0 #/i' /etc/mysql/mariadb.conf.d/50-server.cnf
 EXPOSE 3306
 COPY ./tools/db_script.sh ./
