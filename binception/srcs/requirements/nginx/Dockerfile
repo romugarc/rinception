@@ -7,4 +7,4 @@ RUN	openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -keyout /etc/ng
 #RUN	mkdir -p /var/run/nginx
 EXPOSE	443
 COPY	./conf/nginx.conf /etc/nginx/conf.d
-ENTRYPOINT [ "./tools/nginx_script.sh" ]
+ENTRYPOINT	[ "nginx", "-g", "daemon off;" ]
